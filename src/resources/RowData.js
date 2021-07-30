@@ -1,4 +1,4 @@
-const rows = [
+export const rows = [
     {
         date: '01/21/2021',
         firstName: 'Steven',

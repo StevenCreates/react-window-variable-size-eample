@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { FixedSizeList as List } from 'react-window';
+import {rows} from './resources/RowData';
 
 function App() {
+
+
+  const Row = (props) => {
+    const {index, data, style} = props
+    return (
+      <div style={style}>
+        {data[index].firstName}
+      </div>
+    )
+  }
+  console.log(rows)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+  
+  
+  
+   <List
+   height={150}
+   itemCount={rows.length}
+   itemSize={50}
+   itemData={rows}
+   width={300}
+ >
+   {Row}
+ </List>
+  </>
   );
 }
 

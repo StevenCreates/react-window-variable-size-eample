@@ -1,7 +1,7 @@
 import { FixedSizeList as List } from "react-window";
 import { rows } from "./resources/RowData";
 import styled from "styled-components";
-
+import {useCreateRows} from './hooks/useCreateRows'
 const AppContainer = styled.div`
   position: fixed;
   top: 0;
@@ -17,20 +17,25 @@ const AppContainer = styled.div`
 `;
 
 function App() {
-  const Row = (props) => {
-    const { index, data, style } = props;
-    return <div style={style}>{data[index].firstName}</div>;
-  };
 
-  console.log(rows);
+  const createdRows = useCreateRows(rows);
+  const Row = (props) => {
+    console.log(props)
+    const { index, data, style } = props;
+    return  data[index].component === 'rowComponent' ? (
+    <div style={style}>{data[index].name}</div>
+    ) : (
+      <div style={style}>{data[index].date}</div>
+    )
+  };
 
   return (
     <AppContainer>
       <List
         height={300}
-        itemCount={rows.length}
+        itemCount={createdRows.length}
         itemSize={50}
-        itemData={rows}
+        itemData={createdRows}
         width={300}
       >
         {Row}

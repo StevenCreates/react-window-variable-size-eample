@@ -21,7 +21,6 @@ function App() {
 
   const createdRows = useCreateRows(rows);
   const Row = (props) => {
-    // console.log(props)
     const { index, data, style } = props;
     return  data[index].component === 'rowComponent' ? (
     <div style={style}>{data[index].name}</div>

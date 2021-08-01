@@ -6,7 +6,7 @@
 - Star Repo
 - Clone Repo
 - Npm install
-- See Example
+- See Variable Size List
 
 ### Resources
 - Article/Guide

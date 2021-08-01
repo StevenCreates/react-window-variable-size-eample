@@ -3,6 +3,8 @@ import { rows } from "./resources/RowData";
 import styled from "styled-components";
 import {useCreateRows} from './hooks/useCreateRows'
 import {getComponentSize} from './resources/utils'
+import { DateRow } from "./components/DateRow";
+import { NameRow } from "./components/NameRow";
 const AppContainer = styled.div`
   position: fixed;
   top: 0;
@@ -23,9 +25,9 @@ function App() {
   const Row = (props) => {
     const { index, data, style } = props;
     return  data[index].component === 'rowComponent' ? (
-    <div style={style}>{data[index].name}</div>
+    <NameRow style={style}>{data[index].name}</NameRow>
     ) : (
-      <div style={style}>{data[index].date}</div>
+      <DateRow style={style} >{data[index].date}</DateRow>
     )
   };
 
